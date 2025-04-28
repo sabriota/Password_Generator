@@ -10,7 +10,6 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
 
 
 img.onload = function() {
-    console.log(generatePW()); 
     
     buttonGen.addEventListener("click", function() {
         let pw1 = generatePW();
@@ -21,9 +20,6 @@ img.onload = function() {
 };
 
 function extractRandomness() {
-    const img = document.getElementById('webcam-img');
-    const canvas = document.getElementById('capture-canvas');
-    const ctx = canvas.getContext('2d');
 
     canvas.width = img.width;
     canvas.height = img.height;
@@ -39,7 +35,7 @@ function extractRandomness() {
 
 function generatePW (){
     let password = "";
-    let randomness = extractRandomness(); // einmal am Anfang holen
+    let randomness = extractRandomness(); 
 
     for (let i = 0; i < 16; i++) {
         let randomNumber = (Math.floor(Math.random() * characters.length) + randomness) % characters.length;
@@ -49,5 +45,3 @@ function generatePW (){
     }
     return password
 }
-
-console.log(generatePW())
